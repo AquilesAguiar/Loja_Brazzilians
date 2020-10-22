@@ -1,7 +1,7 @@
 class Cliente{
   //Definindo atributos do Client
   string nome,endereco,email,sexo;
-  int telefone,cpf;
+  double telefone,cpf;
   
   //Construtor Vazio da Classe Cliente
   public Cliente(){
@@ -14,7 +14,7 @@ class Cliente{
   }
 
   //Construtor completo da Classe Cliente
-  public Cliente(string n,string e,string em,string s,int t,int c){
+  public Cliente(string n,string e,string em,string s,double t,double c){
     nome = n;
     endereco = e;
     email = em;
@@ -35,12 +35,12 @@ class Cliente{
     return email;
   }
    public string get_sexo(){
-    return nome;
+    return sexo;
   }
-   public int get_telfone(){
+   public double get_telfone(){
     return telefone;
   }
-  public int get_cpf(){
+  public double get_cpf(){
     return cpf;
   }
 
