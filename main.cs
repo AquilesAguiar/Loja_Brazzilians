@@ -30,7 +30,7 @@ class MainClass {
     //Criando Novo Cliente
     
     //inserção de dados pelo usuario
-    /*Console.Write("Insira seu Nome >>");
+    Console.Write("Insira seu Nome >>");
     NomeC = Console.ReadLine();
     Console.Write("Insira seu CPF >>");
     cpf = double.Parse(Console.ReadLine());
@@ -50,7 +50,7 @@ class MainClass {
     
     //Adicionando o Cliente na Lista
     NovoClinte = new Cliente(NomeC,endereco,email,sexo,tele,cpf,idade);
-    ListaClientes.Add(NovoClinte);*/
+    ListaClientes.Add(NovoClinte);
 
     Console.Clear();//Limpa Terminal
 
