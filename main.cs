@@ -171,13 +171,13 @@ Total da Compra >> R${total}");
         for(int x = 0; x < ListaCarrinho.Count;x++ ){
           
           //Quando achar o código do produto
-          if(produtos.get_CodProdutos()[x] == codigo){
+          if(codigo  == ListaCarrinho[x].get_cod() ){
 
               //Remove em todos os itens daquele indice da lista
 
               Console.WriteLine("Apagando....");
               ListaCarrinho.RemoveAt(x);
-
+              
               produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] + ListaCarrinho[x].get_quantidade();
           }
         }
