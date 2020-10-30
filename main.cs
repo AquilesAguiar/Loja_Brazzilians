@@ -1,4 +1,5 @@
 using System;
+using System.Globalization;
 using System.Collections.Generic;
 
 //As Regras de Negócios podem Ser Encontradas pela Tag []
@@ -10,9 +11,13 @@ class MainClass {
 /*-------------------------------------------------------*/  
     Loja produtos = new Loja();
 
-    Cliente NovoClinte = new Cliente("Aquiles","Laranjeiras","joão@gmail.com","Masculino",27940028922,12343254376,18); //Classe cliente
+    /*Cliente NovoCliente = new Cliente("Aquiles","Laranjeiras","joão@gmail.com","Masculino",27940028922,12343254376,18); //Classe cliente (Construtor Completo)*/
+
+    Cliente NovoCliente = new Cliente("aquiles",2333333);//Construtor Teste
 
     carrinho_compra NovoCarrinho = new carrinho_compra("Pão",2,0.76,0); //Classe Carrinho_Compra
+
+    simuPag pagamento = new simuPag();
 
     //Instanciando as Listas
    
@@ -27,6 +32,19 @@ class MainClass {
     double cpf,tele,idade,total = 0;
     int codigo, quantRet,quantTo,quantCar;
 
+    //mensagem de boas vindas
+
+    Console.WriteLine(@"                             Loja Brazillians
+Loja por Brasileiros para Brasileiros,na nossa Loja você irá encotrar tudo que precisa,boatos dizem que Havan e Americanas tem medo da gente, e é pra ter mesmo.
+
+Porque aqui é o Brasillll !!!!
+
+
+Aperte qualquer Tecla Para continuar");
+
+Console.ReadLine();
+Console.Clear();
+
     //Criando Novo Cliente
     
     //inserção de dados pelo usuario
@@ -34,7 +52,7 @@ class MainClass {
     NomeC = Console.ReadLine();
     Console.Write("Insira seu CPF >>");
     cpf = double.Parse(Console.ReadLine());
-
+    /*
     Console.Write("Insira seu Endereço >>");
     endereco = Console.ReadLine();
     Console.Write("Insira seu Telefone>>");
@@ -49,8 +67,12 @@ class MainClass {
     sexo = Console.ReadLine();
     
     //Adicionando o Cliente na Lista
-    NovoClinte = new Cliente(NomeC,endereco,email,sexo,tele,cpf,idade);
-    ListaClientes.Add(NovoClinte);
+    NovoCliente = new Cliente(NomeC,endereco,email,sexo,tele,cpf,idade);
+    ListaClientes.Add(NovoCliente);*/
+
+    //Adicionando o Cliente na Lista (Teste)
+    NovoCliente = new Cliente(NomeC,cpf);
+    ListaClientes.Add(NovoCliente);
 
     Console.Clear();//Limpa Terminal
 
@@ -87,7 +109,6 @@ Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomePr
 
             produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] - quantRet; 
 
-            Console.WriteLine(produtos.get_QtdProdutos()[x]);
             
             //Adicionando itens no Construtor Carrinho
             NovoCarrinho = new carrinho_compra(produtos.get_NomeProdutos()[x],quantRet,produtos.get_PrecoProdutos()[x],produtos.get_CodProdutos()[x]);
@@ -143,7 +164,7 @@ Total da Compra >> R${total}");
       if(deleta == "S"){
       
        //Deve se passa o código do produto que deseja apagar
-       Console.Write("\n\n\nInsira o Código do Produto que deseja Apagar >>");
+       Console.Write("\n\n\nInsira a posição do item  no carrinho sendo 1 o primeiro item >>");
        codigo = int.Parse(Console.ReadLine());
 
         //Um for irá percorrer a Lista
@@ -154,10 +175,10 @@ Total da Compra >> R${total}");
 
               //Remove em todos os itens daquele indice da lista
 
-              produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] + ListaCarrinho[x].get_quantidade();
-
               Console.WriteLine("Apagando....");
               ListaCarrinho.RemoveAt(x);
+
+              produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] + ListaCarrinho[x].get_quantidade();
           }
         }
       }
@@ -165,8 +186,7 @@ Total da Compra >> R${total}");
       else{
         decis = "N";
      }
-    //Limpando o Terminal
-    Console.Clear();
+    
 
     }
     while(decis == "S");
@@ -186,10 +206,26 @@ Valor Por Quantidade >> R${ListaCarrinho[x].get_valor()} X {ListaCarrinho[x].get
          //Realiza o Caculo para o Total da compra realizada
         total = total+NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade());
       }
-        Console.WriteLine($@"
-Total da Compra >> R${total}");
-    
 
+      //Simulação de pagamento
+       Console.WriteLine($"Total da Compra >> R${total}");
+      while(true){
+        Console.Write("Como deseja pagar ? Boleto/cartao >>");
+       decis = Console.ReadLine();
+        cpf = ListaClientes[0].get_cpf();
+
+        if (decis.ToLower() == "boleto"){
+         Console.WriteLine(pagamento.PagarBoleto(total,cpf));
+         break;
+       }
+        else if (decis.ToLower() == "cartao"){
+          Console.Write("Insira o valor do seu cartão >>");
+          double valorcart =  double.Parse(Console.ReadLine());
+
+          Console.WriteLine(pagamento.PagarCartao(total,valorcart,cpf));
+          break;
+        }
+      }
   }
 
 }

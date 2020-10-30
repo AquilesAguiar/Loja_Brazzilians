@@ -25,6 +25,13 @@ class Cliente{
     idade = i;
   }
 
+  //Construtor Para teste
+
+  public Cliente(string n,double c){
+    nome = n;
+    cpf = c;
+  }
+
   //Getters dos atributos do Cliente
 
   public string get_nome(){
