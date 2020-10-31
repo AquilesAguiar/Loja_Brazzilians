@@ -106,7 +106,7 @@ Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomePr
           if(quantRet <= produtos.get_QtdProdutos()[x] ){
             
             //Retirando a quantidade solicitada do Estoque
-
+            //[RN - 02 retirar os itens do estoque]
             produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] - quantRet; 
 
             
@@ -119,7 +119,7 @@ Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomePr
             Console.WriteLine("Itens adicionado no Carrinho");
            }
           
-          // Se não printa uma mensagem de erro
+          // Se não printa uma mensagem de erro [RN - 01 Cliente não pode escolher quantidade de produto abaixo do estoque]
           else{
             Console.WriteLine("Quantidade de Estoque abaixo do esperado");
           }
@@ -178,6 +178,7 @@ Total da Compra >> R${total}");
               Console.WriteLine("Apagando....");
               ListaCarrinho.RemoveAt(x);
               
+              //[RN - 02 adiciona Novamente os itens ao estoque]
               produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] + ListaCarrinho[x].get_quantidade();
           }
         }
@@ -204,9 +205,10 @@ Produto >> {ListaCarrinho[x].get_produto()}
 Valor Por Quantidade >> R${ListaCarrinho[x].get_valor()} X {ListaCarrinho[x].get_quantidade()} = R${NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade())}
 "); 
          //Realiza o Caculo para o Total da compra realizada
-        total = total+NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade());
+       
       }
 
+      //[RN - 03 Simulação de pagamento]
       //Simulação de pagamento
        Console.WriteLine($"Total da Compra >> R${total}");
       while(true){
