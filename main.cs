@@ -82,7 +82,8 @@ Console.Clear();
     Console.WriteLine(@"             Lista De Produtos Brazillians ");
     for(int x = 0; x < produtos.get_NomeProdutos().Count; x++){
         Console.WriteLine($@"
-Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomeProdutos()[x]}  |   Preço >>  {produtos.get_PrecoProdutos()[x]} | ");}
+Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomeProdutos()[x]}  |   Preço >>  {produtos.get_PrecoProdutos()[x]} | ");
+    }
 
     //adiciona itens ao carrinho de Compra
     while(decis == "S"){
