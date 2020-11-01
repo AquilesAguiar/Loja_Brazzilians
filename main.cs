@@ -77,8 +77,17 @@ Console.Clear();
     Console.Clear();//Limpa Terminal
 
 
+<<<<<<< HEAD
    //Funcionamento Da loja
     while(decis != 5){
+=======
+    //Mostrando Itens da Loja
+    Console.WriteLine(@"             Lista De Produtos Brazillians ");
+    for(int x = 0; x < produtos.get_NomeProdutos().Count; x++){
+        Console.WriteLine($@"
+Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomeProdutos()[x]}  |   Preço >>  {produtos.get_PrecoProdutos()[x]} | ");
+    }
+>>>>>>> origin/master
 
       Console.Write("Escolha o que deseja Fazer\n 1 - Mostrar Catálogo de Produtos\n 2 - Comprar Itens\n 3 - Mostrar Carrinho de Compras\n 4 - Retirar Itens do Carrinho\n 5 - Finalizar Compra\n >>");
 
