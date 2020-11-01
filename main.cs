@@ -35,7 +35,7 @@ class MainClass {
     //mensagem de boas vindas
 
     Console.WriteLine(@"                             Loja Brazillians
-Loja por Brasileiros para Brasileiros,na nossa Loja você irá encotrar tudo que precisa,boatos dizem que Havan e Americanas tem medo da gente, e é pra ter mesmo.
+Loja feita por Brasileiros para Brasileiros,na nossa Loja você irá encotrar tudo que precisa,boatos dizem que Havan e Americanas tem medo da gente, e é pra ter mesmo.
 
 Porque aqui é o Brasillll !!!!
 
@@ -203,11 +203,8 @@ Total da Compra >> R${total}");
 Código >> {ListaCarrinho[x].get_cod()}
 Produto >> {ListaCarrinho[x].get_produto()}
 Valor Por Quantidade >> R${ListaCarrinho[x].get_valor()} X {ListaCarrinho[x].get_quantidade()} = R${NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade())}
-"); 
-         //Realiza o Caculo para o Total da compra realizada
-       
-      }
-
+");    
+    }
       //[RN - 03 Simulação de pagamento]
       //Simulação de pagamento
        Console.WriteLine($"Total da Compra >> R${total}");
@@ -229,5 +226,4 @@ Valor Por Quantidade >> R${ListaCarrinho[x].get_valor()} X {ListaCarrinho[x].get
         }
       }
   }
-
 }
