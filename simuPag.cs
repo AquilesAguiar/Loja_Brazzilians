@@ -12,12 +12,12 @@ Utilize este código para realizar o pagametno bancario >> {numR} ";
   
   public string PagarCartao (double total,double valorcart, double cpf){
     if (valorcart < total){
-      return $"Transação do cpf {cpf} não Aprovada,Valor do Cartão abaixo do valor da compra de {total}";
+      return $"Transação do cpf {cpf} não Aprovada,Valor do Cartão abaixo do valor da compra de R${total}";
     }
     else{
       double resultado = valorcart - total;
 
-      return $"Transação do cpf {cpf} aprovada com sucesso.\nValor da compra >> {total}\nSaldo Restande no Cartão >> {resultado}";
+      return $"Transação do cpf {cpf} aprovada com sucesso.\nValor da compra >> R${total}\nSaldo Restande no Cartão >> R${resultado}";
     }
     
   }

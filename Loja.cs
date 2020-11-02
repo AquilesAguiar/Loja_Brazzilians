@@ -27,4 +27,8 @@ class Loja{
     return qtd;
   }
 
+  public void set_QtdProdutos(int q, int indice){
+    qtd[indice] -= q;
+  } 
+
 }

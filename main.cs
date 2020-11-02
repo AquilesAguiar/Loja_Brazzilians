@@ -30,7 +30,7 @@ class MainClass {
     //Definindo Variaveis
     string NomeC,endereco,email,sexo,deleta,pagar;
     double cpf,tele,idade,total = 0,decis = 0;
-    int codigo, quantRet;
+    int codigo, quantRet,quantT;
 
     //mensagem de boas vindas
 
@@ -169,17 +169,24 @@ Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomePr
 
                 Console.WriteLine("Apagando....");
                 ListaCarrinho.RemoveAt(x);
-                
-                //[RN - 02 Remove os itens do estoque]
-                produtos.get_QtdProdutos()[x] = produtos.get_QtdProdutos()[x] - ListaCarrinho[x].get_quantidade();
             }
           }
       }
 
       //Finaliza Compra
       if(decis == 5){
-
+        
+        total = 0;
+        
         Console.WriteLine("Carrinho De Compra");
+
+        //[RN - 02 Remove os itens do estoque]
+        for(int x = 0; x < ListaCarrinho.Count;x++ ){
+           if(produtos.get_CodProdutos()[x]  == ListaCarrinho[x].get_cod() ){
+               //[RN - 02 Remove os itens do estoque]
+              produtos.set_QtdProdutos(ListaCarrinho[x].get_quantidade(),x);
+            }
+        }
 
         for(int x = 0; x < ListaCarrinho.Count;x++ ){
             Console.WriteLine($@"                       
@@ -188,8 +195,12 @@ Código >> {produtos.get_CodProdutos()[x]}   |   Produto >> {produtos.get_NomePr
     Código >> {ListaCarrinho[x].get_cod()}
     Produto >> {ListaCarrinho[x].get_produto()}
     Valor Por Quantidade >> R${ListaCarrinho[x].get_valor()} X {ListaCarrinho[x].get_quantidade()} = R${NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade())}
-    ");    
+    ");
+
+        //Realiza o Caculo para o Total da compra realizada
+        total = total+NovoCarrinho.calcula_valor(ListaCarrinho[x].get_valor(),ListaCarrinho[x].get_quantidade());
         }
+        
           //[RN - 03 Simulação de pagamento]
           //Simulação de pagamento
         Console.WriteLine($"Total da Compra >> R${total}");
